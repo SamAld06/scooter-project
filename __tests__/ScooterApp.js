@@ -4,14 +4,22 @@ const ScooterApp = require("../classes/ScooterApp.js");
 describe("ScooterApp.registerUser(username, password, age)", () => {
   it.skip("registers a new user if old enough", () => {
     // Arrange
+    ScooterApp.registerUser("saldred", "potato", 18)
     // Act
     // Assert
+    expect(ScooterApp.registeredUsers).toHaveProperty("saldred")
   });
 
   it.skip("throws an error if too young or already registered", () => {
     // Arrange
+    const user = ScooterApp.registerUser("saldred", "carrot", 18)
+    const user2 = ScooterApp.registerUser("saldred", "carrot", 10)
     // Act
+    function processRegistration() {
+      ScooterApp.registerUser("saldred", "carrot", 10)
+    }
     // Assert
+    expect(processRegistration).toThrow()
   });
 });
 
